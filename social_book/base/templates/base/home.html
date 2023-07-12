@@ -1,11 +1,110 @@
 {% extends 'main.html' %}
 
+{% load static %}
+
 {% block content %}
-        {% if request.user.is_authenticated %}
-                <h1>Hello {{request.user}}</h1>
-                <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-                <a href="{% url 'login' %}">Login</a>
-                <a href="{% url 'register' %}">Register</a>
-        {% endif %}
+
+        <div class="header">
+                <div class="header-left">
+                        <div class="menu-icon dw dw-menu"></div>
+                        <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+                </div>
+                <div class="header-right">
+                        <div class="user-info-dropdown">
+                                <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                                <span class="user-icon">
+                                                        <img src="{% static 'imgs/img.jpg' %}" alt="">
+                                                </span>
+                                                <span class="user-name">{{request.user}}</span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                {% if request.user.is_authenticated %}
+                                                <a class="dropdown-item" href="{% url 'logout' %}"><i class="dw dw-settings2"></i> Log Out</a>
+                                                {% else %}
+                                                <a class="dropdown-item" href="{% url 'login' %}"><i class="dw dw-help"></i> Login</a>
+                                                <a class="dropdown-item" href="{% url 'register' %}"><i class="dw dw-logout"></i> Register</a>
+                                                {% endif %}
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <div class="left-side-bar">
+                <div class="brand-logo">
+                        <a href="index.html">
+                                <img src="{% static 'imgs/deskapp-logo.svg' %}" alt="" class="dark-logo">
+                                <img src="{% static 'imgs/deskapp-logo-white.svg' %}" alt="" class="light-logo">
+                        </a>
+                        <div class="close-sidebar" data-toggle="left-sidebar-close">
+                                <i class="ion-close-round"></i>
+                        </div>
+                </div>
+                <div class="menu-block customscroll">
+                        <div class="sidebar-menu">
+                                <ul id="accordion-menu">
+                                        <li class="dropdown">
+                                                <a href="javascript:;" class="dropdown-toggle">
+                                                        <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                                                </a>
+                                                <ul class="submenu">
+                                                        <li><a href="index.html">Dashboard style 1</a></li>
+                                                        <li><a href="index2.html">Dashboard style 2</a></li>
+                                                </ul>
+                                        </li>
+                                </ul>
+                        </div>
+                </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="main-container">
+                <div class="pd-ltr-20 xs-pd-20-10">
+                        <div class="min-height-200px">
+                                <div class="page-header">
+                                        <div class="row">
+                                                <div class="col-md-6 col-sm-12">
+                                                        <div class="title">
+                                                                <h4>blank</h4>
+                                                        </div>
+                                                        <nav aria-label="breadcrumb" role="navigation">
+                                                                <ol class="breadcrumb">
+                                                                        <li class="breadcrumb-item"><a
+                                                                                        href="index.html">Home</a></li>
+                                                                        <li class="breadcrumb-item active" aria-current="page">
+                                                                                blank</li>
+                                                                </ol>
+                                                        </nav>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 text-right">
+                                                        <div class="dropdown">
+                                                                <a class="btn btn-primary dropdown-toggle" href="#"
+                                                                        role="button" data-toggle="dropdown">
+                                                                        January 2018
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-right">
+                                                                        <a class="dropdown-item" href="#">Export List</a>
+                                                                        <a class="dropdown-item" href="#">Policies</a>
+                                                                        <a class="dropdown-item" href="#">View Assets</a>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+                                </div>
+                        </div>
+                </div>
+        </div>
 {% endblock content %}
